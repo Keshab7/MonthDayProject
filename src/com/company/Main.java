@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         int year;
-        int dayOfMonth;
         int month;
+        int dayOfMonth;
 
         Scanner keyboard;
         keyboard = new Scanner(System.in);
@@ -20,13 +20,24 @@ public class Main {
                 "Saturday's child works hard for a living,\n" +
                 "But the child born on the Sabbath Day,\n" +
                 "Is fair and wise and good in every way.");
+        System.out.println("What year were you born in?");
+        year = keyboard.nextInt();
+        System.out.println("What month were you born in? In Numerical Value. Ex. January = 1 December = 12");
+        month = keyboard.nextInt();
+        System.out.println("What day of the month were you born in?");
+        dayOfMonth = keyboard.nextInt();
 
         int daysInMonth = numberOfDaysInMonth(month, year);
-        System.out.println("There are " + daysInMonth + " in that month");
+        System.out.println("There are " + daysInMonth + " days in that month");
+
+        int dayOfBirth = zellerCongruence(month, year, dayOfMonth);
+        System.out.println(dayOfBirth);
+
+       
     }
 
-    public static int numberOfDaysInMonth(int year, int month) {
-        switch (month){
+    public static int numberOfDaysInMonth(int month, int year) {
+        switch (month) {
             case 1:
             case 3:
             case 5:
@@ -44,13 +55,32 @@ public class Main {
                 return 30;
 
             default:
-                if ((year % 100 == 0 && year % 400 == 0) || (!(year % 100 == 0) && year % 4 == 0)){
+                if ((year % 100 == 0 && year % 400 == 0) || (!(year % 100 == 0) && year % 4 ==0)) {
                     return 29;
-                }else {
+                } else {
                     return 28;
                 }
+
         }
+
     }
-    
+    public static int zellerCongruence(int month, int year, int daysInMonth){
+        if (month == 1 || month == 2){
+            month = month +12;
+            year--;
+        }
+        int yearsEndingInZeros;
+        yearsEndingInZeros = (year / 100);
+        int zeller;
+        zeller = (13 * (month + 1));
+        int yearOfCentury;
+        yearOfCentury = year % 100;
+        int dayOfWeek;
+        dayOfWeek = ((daysInMonth + ((zeller)/5) + yearOfCentury + (yearOfCentury/4) + ((yearsEndingInZeros) /4) + (5 * (yearsEndingInZeros))) % 7);
+        return dayOfWeek;
+    }
+
+
 }
+
 
