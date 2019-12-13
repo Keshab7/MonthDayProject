@@ -33,7 +33,9 @@ public class Main {
         int dayOfBirth = zellerCongruence(month, year, dayOfMonth);
         System.out.println(dayOfBirth);
 
-       
+        String nurseryRhyme = poem(dayOfBirth);
+        System.out.println(nurseryRhyme);
+
     }
 
     public static int numberOfDaysInMonth(int month, int year) {
@@ -78,6 +80,33 @@ public class Main {
         int dayOfWeek;
         dayOfWeek = ((daysInMonth + ((zeller)/5) + yearOfCentury + (yearOfCentury/4) + ((yearsEndingInZeros) /4) + (5 * (yearsEndingInZeros))) % 7);
         return dayOfWeek;
+    }
+
+    public static String poem(int dayofWeek ){
+
+        switch (dayofWeek){
+            case 2:
+                return "You were born on a Monday \n" +
+                        "According to the poem you are fair of face ";
+            case 3:
+                return "You were born on a Tuesday \n" +
+                        "According to the poem you are full of grace ";
+            case 4:
+                return "You were born on a Wednesday \n" +
+                        "According to the poem you are full of woe ";
+            case 5:
+                return "You were born on a Thursday \n" +
+                        "According to the poem you have far of go ";
+            case 6:
+                return "You were born on a Friday \n" +
+                        "According to the poem you are loving and giving";
+            case 0:
+                return "You were born on a Saturday \n" +
+                        "According to the poem you work hard for a living";
+            default:
+                return "You were born on the Sabbath Day \n" +
+                        "According to the poem you are fair and wise in every way ";
+        }
     }
 
 
