@@ -8,10 +8,10 @@ public class Main {
         int year;
         int month;
         int dayOfMonth;
-
+        int retry;
         Scanner keyboard;
         keyboard = new Scanner(System.in);
-
+    do {
         System.out.println("Monday's child is fair of face,\n" +
                 "Tuesday's child is full of grace,\n" +
                 "Wednesday's child is full of woe,\n" +
@@ -36,6 +36,11 @@ public class Main {
         String nurseryRhyme = poem(dayOfBirth);
         System.out.println(nurseryRhyme);
 
+
+        System.out.println("Would you like to again? yes = 1 or no = 2");
+        retry = keyboard.nextInt();
+    }
+    while (retry == 1);
     }
 
     public static int numberOfDaysInMonth(int month, int year) {
